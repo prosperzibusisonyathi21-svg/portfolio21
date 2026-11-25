@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="../logo.png" class="logo" alt="Prosper logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" onclick="closeMenu(); return false;" class="close-icon">X</a></li>
+                </ul>
+                <a href="#" onclick="openMenu(); return false;" class="open-icon" aria-label="Open menu">☰</a>
+            </nav>
+            <div class="header-text">
+                <p>UI/UX Designer</p>
+                <h1>Hi, I'm <span>Prosper</span><br>from Zimbabwe</h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="../user.png" alt="Portrait of Prosper">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am Prosper, a UI/UX designer who creates accessible, attractive and easy-to-use digital experiences. I use Figma and am continually improving my HTML, CSS and JavaScript skills.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="openTab(event, 'skills')">Skills</p>
+                        <p class="tab-links" onclick="openTab(event, 'experience')">Experience</p>
+                        <p class="tab-links" onclick="openTab(event, 'education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>UI/UX</span><br>Interface design and user experience</li>
+                            <li><span>Web Development</span><br>Responsive HTML and CSS websites</li>
+                            <li><span>Prototyping</span><br>Clickable Figma prototypes</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>2026 - Current</span><br>Freelance UI/UX Designer</li>
+                            <li><span>2025 - 2026</span><br>Design and front-end portfolio projects</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>Current</span><br>Figma, HTML, CSS and JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <h2>UI Design</h2>
+                    <p>I create clean, polished screens for websites and mobile apps.</p>
+                </div>
+                <div>
+                    <h2>UX Design</h2>
+                    <p>I research user needs and make digital products simple to use.</p>
+                </div>
+                <div>
+                    <h2>Prototyping</h2>
+                    <p>I build clickable prototypes so ideas can be tested early.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Portfolio</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="../work-1.png" alt="Social media application project">
+                    <div class="layer">
+                        <h3>Social Media App</h3>
+                        <p>A clean mobile experience designed to keep people connected.</p>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="../work-2.png" alt="Online shopping application project">
+                    <div class="layer">
+                        <h3>Online Shopping App</h3>
+                        <p>A simple shopping interface focused on clear product discovery.</p>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="../work-3.png" alt="Food delivery application project">
+                    <div class="layer">
+                        <h3>Food Delivery App</h3>
+                        <p>An intuitive ordering experience for discovering and buying food.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p>Email: prosper@example.com</p>
+                    <a href="../my-cv.pdf" class="btn btn2" download>Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form onsubmit="sendForm(event)">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <input type="email" id="email" placeholder="Your Email" required>
+                        <textarea id="message" placeholder="Your Message" rows="6" required></textarea>
+                        <button type="submit" class="btn btn2">Send</button>
+                    </form>
+                    <p id="msg"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>Copyright 2026 Prosper. All rights reserved.</p>
+    </div>
+
+    <script>
+        function openMenu() {
+            document.getElementById("sidemenu").style.right = "0";
+        }
+
+        function closeMenu() {
+            document.getElementById("sidemenu").style.right = "-200px";
+        }
+
+        function openTab(event, tabName) {
+            document.querySelectorAll(".tab-links").forEach(function(tab) {
+                tab.classList.remove("active-link");
+            });
+            document.querySelectorAll(".tab-contents").forEach(function(tab) {
+                tab.classList.remove("active-tab");
+            });
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabName).classList.add("active-tab");
+        }
+
+        function sendForm(event) {
+            event.preventDefault();
+            document.getElementById("msg").textContent = "Thank you! Your message is ready to send.";
+            event.currentTarget.reset();
+        }
+    </script>
+</body>
+</html>
